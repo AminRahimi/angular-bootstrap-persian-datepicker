@@ -871,8 +871,8 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.position','persianDate'
   showButtonBar: true
 })
 
-.directive('datepickerPopup', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'datepickerPopupConfig', 'datepickerConfig',
-function ($compile, $parse, $document, $position, dateFilter, datepickerPopupConfig, datepickerConfig) {
+.directive('datepickerPopup', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'datepickerPopupConfig', 'datepickerConfig','persianDateFilter',
+function ($compile, $parse, $document, $position, dateFilter, datepickerPopupConfig, datepickerConfig,persianDateFilter) {
   return {
     restrict: 'EA',
     require: 'ngModel',

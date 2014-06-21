@@ -1,5 +1,6 @@
-﻿app.controller("MainController", function($scope){
-$scope.today = function() {
+﻿angular.module('plunker', ['ui.bootstrap']);
+var DatepickerDemoCtrl = function ($scope) {
+  $scope.today = function() {
     $scope.dt = new Date();
   };
   $scope.today();
@@ -33,5 +34,4 @@ $scope.today = function() {
   $scope.initDate = new Date('2016-15-20');
   $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
   $scope.format = $scope.formats[0];
-
-  });
+};

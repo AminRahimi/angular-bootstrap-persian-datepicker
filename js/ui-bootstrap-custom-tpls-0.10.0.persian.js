@@ -946,13 +946,18 @@ function ($compile, $parse, $document, $position, dateFilter, datepickerPopupCon
         'ng-model': 'date',
         'ng-change': 'dateSelection()'
       });
-      var datepickerEl = angular.element(popupEl.children()[0]),
-          datepickerOptions = {};
-      if (attrs.datepickerOptions) {
-        datepickerOptions = originalScope.$eval(attrs.datepickerOptions);
-        datepickerEl.attr(angular.extend({}, datepickerOptions));
+      function cameltoDash( string ){
+        return string.replace(/([A-Z])/g, function($1) { return '-' + $1.toLowerCase(); });
       }
 
+      // datepicker element
+      var datepickerEl = angular.element(popupEl.children()[0]),
+	  datepickerOptions=scope.$parent.$eval(attrs.datepickerOptions);
+      if ( attrs.datepickerOptions ) {
+        angular.forEach(scope.$parent.$eval(attrs.datepickerOptions), function( value, option ) {
+          datepickerEl.attr( cameltoDash(option), value );
+        });
+      }
       // TODO: reverse from dateFilter string to Date object
       function parseDate(viewValue) {
         if (!viewValue) {

@@ -6,8 +6,9 @@ A clean, flexible, and fully customizable persian date picker.
 User can navigate through months and years.
 The datepicker shows dates that come from other than the main month being displayed. These other dates are also selectable.
 
-Everything is formatted using the [persian date filter](http://docs.angularjs.org/api/ng.filter:date) and thus is also localized.
+Everything is formatted using the [persian date filter](#) and thus is also localized.
 
+[Demo](http://aminrahimi.github.io/angular-bootstrap-persian-datepicker)
 ### Datepicker Settings ###
 
 All settings can be provided as attributes in the `datepicker` or globally configured through the `datepickerConfig`.

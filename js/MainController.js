@@ -12,7 +12,7 @@
 
   // Disable weekend selection
   $scope.disabled = function(date, mode) {
-    return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+    return ( mode === 'day' &&date.getDay() === 5  );
   };
 
   $scope.toggleMin = function() {

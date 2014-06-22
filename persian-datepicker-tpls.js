@@ -8,8 +8,8 @@
 
 
 
-angular.module("ui.bootstrap.datepicker.tpls", ["template/datepicker/datepicker.html","template/datepicker/day.html","template/datepicker/month.html","template/datepicker/popup.html","template/datepicker/year.html"]);
-angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootstrap.position','ui.bootstrap.datepicker.tpls','persianDate'])
+angular.module("ui.bootstrap.persian.datepicker.tpls", ["template/datepicker/datepicker.html","template/datepicker/day.html","template/datepicker/month.html","template/datepicker/popup.html","template/datepicker/year.html"]);
+angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'ui.bootstrap.position','ui.bootstrap.persian.datepicker.tpls','persianDate'])
 
 .constant('datepickerConfig', {
   formatDay: 'dd',

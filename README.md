@@ -1,4 +1,5 @@
-Angular-bootstrap-persian-datepicker
+Angular Bootstrap Persian Datepicker
+تقویم شمسی انگولار!
 ====================================
 
 A clean, flexible, and fully customizable persian date picker.

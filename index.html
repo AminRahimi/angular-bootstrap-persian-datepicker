@@ -58,17 +58,17 @@
     <div class="row">
         <div class="col-md-6">
             <p class="input-group">
-              <input type="text" class="form-control"  datepicker-popup-persian="{{format}}" ng-model="dt" is-open="opened"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="بسته" />
+              <input type="text" class="form-control"  datepicker-popup-persian="{{format}}" ng-model="dt" is-open="persianIsOpen"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="بسته" />
                <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button type="button" class="btn btn-default" ng-click="openPersian($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span> 
             </p>
 			
 			
 			<p class="input-group">
-              <input type="text" class="form-control"   datepicker-popup="{{format}}" ng-model="dt" is-open="opened"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="بسته" />
+              <input type="text" class="form-control"   datepicker-popup="{{format}}" ng-model="dt" is-open="gregorianIsOpen"  datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="بسته" />
                <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                <button type="button" class="btn btn-default" ng-click="openGregorian($event)"><i class="glyphicon glyphicon-calendar"></i></button>
               </span> 
             </p>
         </div>

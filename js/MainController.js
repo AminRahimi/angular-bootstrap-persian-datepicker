@@ -20,7 +20,13 @@
   };
   $scope.toggleMin();
 
-  $scope.open = function($event) {
+  $scope.openPersian = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+  $scope.openGregorian = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
 

@@ -25,12 +25,14 @@
     $event.stopPropagation();
 
     $scope.persianIsOpen = true;
+    $scope.gregorianIsOpen = false;
   };
   $scope.openGregorian = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
 
     $scope.gregorianIsOpen = true;
+    $scope.persianIsOpen = false;
   };
 
   $scope.dateOptions = {

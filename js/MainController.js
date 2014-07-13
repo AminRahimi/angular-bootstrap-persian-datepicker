@@ -24,13 +24,13 @@
     $event.preventDefault();
     $event.stopPropagation();
 
-    $scope.opened = true;
+    $scope.persianIsOpen = true;
   };
   $scope.openGregorian = function($event) {
     $event.preventDefault();
     $event.stopPropagation();
 
-    $scope.opened = true;
+    $scope.gregorianIsOpen = true;
   };
 
   $scope.dateOptions = {

@@ -1,14 +1,14 @@
-﻿/*
- * angular-ui-bootstrap-datepicker
- * http://angular-ui.github.io/bootstrap/#/datepicker
+/*
+ * angular-ui-bootstrap-persian-datepicker
+ *	http://aminrahimi.github.io/angular-bootstrap-persian-datepicker
 
- * Version:  2014-05-11
+ * Version:  2014-07-13
  * License: MIT
  */
 
 
 
-angular.module("ui.bootstrap.persian.datepicker.tpls", ["template/datepicker/datepicker.html","template/datepicker/day.html","template/datepicker/month.html","template/datepicker/popup.html","template/datepicker/year.html"]);
+angular.module("ui.bootstrap.persian.datepicker.tpls", ["template/persianDatepicker/datepicker.html","template/persianDatepicker/day.html","template/persianDatepicker/month.html","template/persianDatepicker/popup.html","template/persianDatepicker/year.html"]);
 angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'ui.bootstrap.position','ui.bootstrap.persian.datepicker.tpls','persianDate'])
 
 .constant('datepickerConfig', {
@@ -197,16 +197,16 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   };
 }])
 
-.directive( 'datepicker', function () {
+.directive( 'persianDatepicker', function () {
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/datepicker/datepicker.html',
+    templateUrl: 'template/persianDatepicker/datepicker.html',
     scope: {
       datepickerMode: '=?',
       dateDisabled: '&'
     },
-    require: ['datepicker', '?^ngModel'],
+    require: ['persianDatepicker', '?^ngModel'],
     controller: 'DatepickerController',
     link: function(scope, element, attrs, ctrls) {
       var datepickerCtrl = ctrls[0], ngModelCtrl = ctrls[1];
@@ -218,12 +218,12 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   };
 })
 
-.directive('daypicker', ['dateFilter','PersianDateService','persianDateFilter', function (dateFilter,PersianDateService,persianDateFilter) {
+.directive('persianDaypicker', ['dateFilter','PersianDateService','persianDateFilter', function (dateFilter,PersianDateService,persianDateFilter) {
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/datepicker/day.html',
-    require: '^datepicker',
+    templateUrl: 'template/persianDatepicker/day.html',
+    require: '^persianDatepicker',
     link: function(scope, element, attrs, ctrl) {
       scope.showWeeks = ctrl.showWeeks;
 
@@ -346,12 +346,12 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   };
 }])
 
-.directive('monthpicker', ['dateFilter','PersianDateService','persianDateFilter', function (dateFilter,PersianDateService,persianDateFilter) {
+.directive('persianMonthpicker', ['dateFilter','PersianDateService','persianDateFilter', function (dateFilter,PersianDateService,persianDateFilter) {
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/datepicker/month.html',
-    require: '^datepicker',
+    templateUrl: 'template/persianDatepicker/month.html',
+    require: '^persianDatepicker',
     link: function(scope, element, attrs, ctrl) {
       ctrl.step = { years: 1 };
       ctrl.element = element;
@@ -407,12 +407,12 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   };
 }])
 
-.directive('yearpicker', ['dateFilter','PersianDateService','persianDateFilter', function (dateFilter,PersianDateService,persianDateFilter) {
+.directive('persianYearpicker', ['dateFilter','PersianDateService','persianDateFilter', function (dateFilter,PersianDateService,persianDateFilter) {
   return {
     restrict: 'EA',
     replace: true,
-    templateUrl: 'template/datepicker/year.html',
-    require: '^datepicker',
+    templateUrl: 'template/persianDatepicker/year.html',
+    require: '^persianDatepicker',
     link: function(scope, element, attrs, ctrl) {
       var range = ctrl.yearRange;
 
@@ -471,7 +471,7 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
 }])
 
 .constant('datepickerPopupConfig', {
-  datepickerPopup: 'yyyy-MM-dd',
+  datepickerPopupPersian: 'yyyy-MM-dd',
   currentText: 'Today',
   clearText: 'Clear',
   closeText: 'Done',
@@ -480,7 +480,7 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   showButtonBar: true
 })
 
-.directive('datepickerPopup', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'dateParser', 'datepickerPopupConfig','PersianDateService','persianDateFilter',
+.directive('datepickerPopupPersian', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'dateParser', 'datepickerPopupConfig','PersianDateService','persianDateFilter',
 function ($compile, $parse, $document, $position, dateFilter, dateParser, datepickerPopupConfig, PersianDateService, persianDateFilter) {
   return {
     restrict: 'EA',
@@ -503,13 +503,13 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
         return scope[key + 'Text'] || datepickerPopupConfig[key + 'Text'];
       };
 
-      attrs.$observe('datepickerPopup', function(value) {
-          dateFormat = value || datepickerPopupConfig.datepickerPopup;
+      attrs.$observe('datepickerPopupPersian', function(value) {
+          dateFormat = value || datepickerPopupConfig.datepickerPopupPersian;
           ngModel.$render();
       });
 
       // popup element used to display calendar
-      var popupEl = angular.element('<div datepicker-popup-wrap><div datepicker></div></div>');
+      var popupEl = angular.element('<div persian-datepicker-popup-wrap><div persian-datepicker></div></div>');
       popupEl.attr({
         'ng-model': 'date',
         'ng-change': 'dateSelection()'
@@ -674,12 +674,12 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
   };
 }])
 
-.directive('datepickerPopupWrap', function() {
+.directive('persianDatepickerPopupWrap', function() {
   return {
     restrict:'EA',
     replace: true,
     transclude: true,
-    templateUrl: 'template/datepicker/popup.html',
+    templateUrl: 'template/persianDatepicker/popup.html',
     link:function (scope, element, attrs) {
       element.bind('click', function(event) {
         event.preventDefault();
@@ -688,17 +688,17 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
     }
   };
 });
-angular.module("template/datepicker/datepicker.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("template/datepicker/datepicker.html",
+angular.module("template/persianDatepicker/datepicker.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("template/persianDatepicker/datepicker.html",
     "<div ng-switch=\"datepickerMode\" role=\"application\" ng-keydown=\"keydown($event)\">\n" +
-    "  <daypicker ng-switch-when=\"day\" tabindex=\"0\"></daypicker>\n" +
-    "  <monthpicker ng-switch-when=\"month\" tabindex=\"0\"></monthpicker>\n" +
-    "  <yearpicker ng-switch-when=\"year\" tabindex=\"0\"></yearpicker>\n" +
+    "  <persian-daypicker ng-switch-when=\"day\" tabindex=\"0\"></persian-daypicker>\n" +
+    "  <persian-monthpicker ng-switch-when=\"month\" tabindex=\"0\"></persian-monthpicker>\n" +
+    "  <persian-yearpicker ng-switch-when=\"year\" tabindex=\"0\"></persian-yearpicker>\n" +
     "</div>");
 }]);
 
-angular.module("template/datepicker/day.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("template/datepicker/day.html",
+angular.module("template/persianDatepicker/day.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("template/persianDatepicker/day.html",
     "<table role=\"grid\" aria-labelledby=\"{{uniqueId}}-title\" aria-activedescendant=\"{{activeDateId}}\">\n" +
     "  <thead>\n" +
     "    <tr>\n" +
@@ -723,8 +723,8 @@ angular.module("template/datepicker/day.html", []).run(["$templateCache", functi
     "");
 }]);
 
-angular.module("template/datepicker/month.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("template/datepicker/month.html",
+angular.module("template/persianDatepicker/month.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("template/persianDatepicker/month.html",
     "<table role=\"grid\" aria-labelledby=\"{{uniqueId}}-title\" aria-activedescendant=\"{{activeDateId}}\">\n" +
     "  <thead>\n" +
     "    <tr>\n" +
@@ -744,8 +744,8 @@ angular.module("template/datepicker/month.html", []).run(["$templateCache", func
     "");
 }]);
 
-angular.module("template/datepicker/popup.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("template/datepicker/popup.html",
+angular.module("template/persianDatepicker/popup.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("template/persianDatepicker/popup.html",
     "<ul class=\"dropdown-menu\" ng-style=\"{display: (isOpen && 'block') || 'none', top: position.top+'px', left: position.left+'px'}\" ng-keydown=\"keydown($event)\">\n" +
     "	<li ng-transclude></li>\n" +
     "	<li ng-if=\"showButtonBar\" style=\"padding:10px 9px 2px\">\n" +
@@ -759,8 +759,8 @@ angular.module("template/datepicker/popup.html", []).run(["$templateCache", func
     "");
 }]);
 
-angular.module("template/datepicker/year.html", []).run(["$templateCache", function($templateCache) {
-  $templateCache.put("template/datepicker/year.html",
+angular.module("template/persianDatepicker/year.html", []).run(["$templateCache", function($templateCache) {
+  $templateCache.put("template/persianDatepicker/year.html",
     "<table role=\"grid\" aria-labelledby=\"{{uniqueId}}-title\" aria-activedescendant=\"{{activeDateId}}\">\n" +
     "  <thead>\n" +
     "    <tr>\n" +

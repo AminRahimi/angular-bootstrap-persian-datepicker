@@ -28,7 +28,7 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   maxDate: null
 })
 
-.controller('DatepickerController', ['$scope', '$attrs', '$parse', '$interpolate', '$timeout', '$log', 'dateFilter', 'datepickerConfig','PersianDateService','persianDateFilter', function($scope, $attrs, $parse, $interpolate, $timeout, $log, dateFilter, datepickerConfig,PersianDateService,persianDateFilter) {
+.controller('ui.bootstrap.persian.datepicker.DatepickerController', ['$scope', '$attrs', '$parse', '$interpolate', '$timeout', '$log', 'dateFilter', 'datepickerConfig','PersianDateService','persianDateFilter', function($scope, $attrs, $parse, $interpolate, $timeout, $log, dateFilter, datepickerConfig,PersianDateService,persianDateFilter) {
   var self = this,
       ngModelCtrl = { $setViewValue: angular.noop }; // nullModelCtrl;
 
@@ -207,7 +207,7 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
       dateDisabled: '&'
     },
     require: ['persianDatepicker', '?^ngModel'],
-    controller: 'DatepickerController',
+    controller: 'ui.bootstrap.persian.datepicker.DatepickerController',
     link: function(scope, element, attrs, ctrls) {
       var datepickerCtrl = ctrls[0], ngModelCtrl = ctrls[1];
 

@@ -781,7 +781,7 @@ angular.module("template/persianDatepicker/month.html", []).run(["$templateCache
 
 angular.module("template/persianDatepicker/popup.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("template/persianDatepicker/popup.html",
-    "<ul class=\"dropdown-menu\" ng-style=\"{display: (isOpen && 'block') || 'none', top: position.top+'px', left: position.left+'px'}\" ng-keydown=\"keydown($event)\">\n" +
+    "<ul style=\"direction:ltr;\" class=\"dropdown-menu\" ng-style=\"{display: (isOpen && 'block') || 'none', top: position.top+'px', left: position.left+'px'}\" ng-keydown=\"keydown($event)\">\n" +
     "	<li ng-transclude></li>\n" +
     "	<li ng-if=\"showButtonBar\" style=\"padding:10px 9px 2px\">\n" +
     "		<span class=\"btn-group\">\n" +

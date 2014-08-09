@@ -516,8 +516,8 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   showButtonBar: true
 })
 
-.directive('datepickerPopupPersian', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'dateParser', 'datepickerPopupConfig','PersianDateService','persianDateFilter',
-function ($compile, $parse, $document, $position, dateFilter, dateParser, datepickerPopupConfig, PersianDateService, persianDateFilter) {
+.directive('datepickerPopupPersian', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'dateParser', 'datepickerPopupConfig','PersianDateService','persianDateFilter','EnToFaNumberFilter',
+function ($compile, $parse, $document, $position, dateFilter, dateParser, datepickerPopupConfig, PersianDateService, persianDateFilter,EnToFaNumberFilter) {
   return {
     restrict: 'EA',
     require: 'ngModel',
@@ -634,8 +634,7 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
       ngModel.$render = function() {
 	  
         //var date = ngModel.$viewValue ? dateFilter(ngModel.$viewValue, dateFormat) : '';
-		var date = ngModel.$viewValue ? persianDateFilter(ngModel.$viewValue, dateFormat) : '';
-		
+		var date = ngModel.$viewValue ? EnToFaNumberFilter(persianDateFilter(ngModel.$viewValue, dateFormat)) : '';
 		
         element.val(date);
         scope.date = parseDate( ngModel.$modelValue );

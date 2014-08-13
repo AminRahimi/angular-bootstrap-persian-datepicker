@@ -58,7 +58,7 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   minMode: 'day',
   maxMode: 'year',
   showWeeks: true,
-  startingDay: 0,
+  startingDay: 6,
   yearRange: 20,
   minDate: null,
   maxDate: null

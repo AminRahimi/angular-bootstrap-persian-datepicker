@@ -13,7 +13,7 @@ Everything is formatted using the [persian date filter](https://github.com/AminR
 [Demo](http://aminrahimi.github.io/angular-bootstrap-persian-datepicker)
 ### Datepicker Settings ###
 
-All settings can be provided as attributes in the `datepicker` or globally configured through the `datepickerConfig`.
+All settings can be provided as attributes in the `persian-datepicker` or globally configured through the `datepickerConfig`.
 
  * `ng-model` <i class="glyphicon glyphicon-eye-open"></i>
  	:
@@ -40,7 +40,7 @@ All settings can be provided as attributes in the `datepicker` or globally confi
  	Whether to display week numbers.
 
  * `starting-day`
- 	_(Defaults: 0)_ :
+ 	_(Defaults: 6)_ :
  	Starting day of the week from 0-6 (0=Sunday, ..., 6=Saturday).
 
  * `init-date`
@@ -87,9 +87,9 @@ All settings can be provided as attributes in the `datepicker` or globally confi
 ### Popup Settings ###
 
 Options for datepicker can be passed as JSON using the `datepicker-options` attribute.
-Specific settings for the `datepicker-popup`, that can globally configured through the `datepickerPopupConfig`, are:
+Specific settings for the `datepicker-popup-persian`, that can globally configured through the `datepickerPopupConfig`, are:
 
- * `datepicker-popup`
+ * `datepicker-popup-persian`
  	_(Default: 'yyyy-MM-dd')_ :
  	The format for displayed dates.
 

@@ -1,7 +1,7 @@
 {
   "name": "angular-bootstrap-persian-datepicker",
   "version": "0.1.0",
-  "main": "./angular-bootstrap-persian-datepicker.js",
+  "main": "./persian-datepicker-tpls.js",
   "dependencies": {
     "angular-ui": "latest"
   },

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "main": "./persian-datepicker-tpls.js",
   "dependencies": {
-    "angular-ui": "latest"
+    "angular-ui-bootstrap": "latest"
   },
   "ignore": []
 }

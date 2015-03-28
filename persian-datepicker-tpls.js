@@ -332,7 +332,7 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
           scope.weekNumbers = [];
           var weekNumber = getISO8601WeekNumber( scope.rows[0][0].date ),
               numWeeks = scope.rows.length;
-          while( scope.weekNumbers.push(weekNumber++) < numWeeks ) {}
+          while( scope.weekNumbers.push((weekNumber<= 53 ? weekNumber++ : weekNumber-=52)) < numWeeks ) {}
         }
       };
 

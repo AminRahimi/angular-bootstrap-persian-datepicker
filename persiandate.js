@@ -379,7 +379,7 @@ var persian_to_gregorian=function(year, month, day){
 this.persian_to_gregorian_Date = function(year, month, day){
 	month=month + 1;
 	if(month>12){
-		year +=Math.floor((month / 12)-1);
+		year +=Math.floor(month / 12);
 		month=month%12 || 12;
 	}else if(month<1 && month>-12){
 		if(month===0){

@@ -344,8 +344,16 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
         var checkDate = new Date(date);
         checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7)); // Thursday
         var time = checkDate.getTime();
-        checkDate.setMonth(0); // Compare with Jan 1
-        checkDate.setDate(1);
+        
+        checkDate.setMonth(2); // Compare with 1 farvardin
+        checkDate.setDate(15); // Compare with 1 farvardin
+        
+        if((time - checkDate)<0){
+            return Math.floor(Math.round(((time + (86400000 * 365)) - checkDate) / 86400000) / 7) + 1;
+        }
+  
+        //checkDate.setMonth(0); // Compare with Jan 1
+        //checkDate.setDate(1);
         return Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 1;
       }
 

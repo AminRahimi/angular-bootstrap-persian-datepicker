@@ -377,7 +377,19 @@ var persian_to_gregorian=function(year, month, day){
 	return jd_to_gregorian(persian_to_jd(year, month, day));
 };
 this.persian_to_gregorian_Date = function(year, month, day){
-	var greg = jd_to_gregorian(persian_to_jd(year, month + 1, day));
+	month=month + 1;
+	if(month>12){
+		year +=Math.floor((month / 12)-1);
+		month=month%12 || 12;
+	}else if(month<1 && month>-12){
+		if(month===0){
+			year-=1;
+		}else{
+			year +=Math.floor((month / 12));
+		}
+		month+=12;
+	}
+	var greg = jd_to_gregorian(persian_to_jd(year, month, day));
 	return new Date(greg[0],greg[1] - 1,greg[2]);
 };
 this.persianMonthDays=function(year, month) {

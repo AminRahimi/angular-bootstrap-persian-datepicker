@@ -617,7 +617,9 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
         }
       }
       ngModel.$parsers.unshift(parseDate);
-
+	ngModel.$formatters.push(function (value) {
+    	  return ngModel.$isEmpty(value) ? value : persianDateFilter(value, dateFormat);
+    	});
       // Inner change
       scope.dateSelection = function(dt) {
         if (angular.isDefined(dt)) {

@@ -517,6 +517,11 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
 .constant('datepickerPopupConfig', {
   datepickerPopupPersian: 'yyyy-MM-dd',
   currentText: 'Today',
+  html5Types: {
+    date: 'yyyy-MM-dd',
+    'datetime-local': 'yyyy-MM-ddTHH:mm:ss.sss',
+    'month': 'yyyy-MM'
+  },
   clearText: 'Clear',
   closeText: 'Done',
   closeOnDateSelection: true,

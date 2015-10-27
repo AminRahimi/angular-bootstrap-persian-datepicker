@@ -1,11 +1,11 @@
 {
   "name": "angular-bootstrap-persian-datepicker",
   "version": "0.0.1",
-  "homepage": "https://github.com/rafialikhan/angular-bootstrap-persian-datepicker",
+  "homepage": "https://github.com/AminRahimi/angular-bootstrap-persian-datepicker",
   "authors": [
-    "Rafi Ali Khan <rafialikhan@gmail.com>"
+    "AminRahimi <mnrhmm@gmail.com>"
   ],
-  "description": "This is a fork of the component by AminRahimi https://github.com/AminRahimi/angular-bootstrap-persian-datepicker/blob/master/bower.json with additional modifications for HTML5 support",
+  "description": "This is a persian date picker for angular framework",
   "main": ["./persiandate.js","./persian-datepicker-tpls.js"],
   "keywords": [
     "Persian",

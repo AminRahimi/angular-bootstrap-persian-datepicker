@@ -35,7 +35,7 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
 					ret += symbolMap[input[i]];
 				else
 					ret += input[i];
-			
+
 			return ret;
 		};
 	})
@@ -137,10 +137,10 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
     var model = ngModelCtrl.$modelValue ? new Date(ngModelCtrl.$modelValue) : null;
     return {
       date: date,
-	  
+
       //label: dateFilter(date, format),
 	  label: persianDateFilter(date, format),
-	  
+
       selected: model && this.compare(date, model) === 0,
       disabled: this.isDisabled(date),
       current: this.compare(date, new Date()) === 0
@@ -177,11 +177,11 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
    //     month = self.activeDate.getMonth() + direction * (self.step.months || 0);
 	var year = PersianDateService.getFullYear(self.activeDate) + direction * (self.step.years || 0),
 	month = PersianDateService.getMonth(self.activeDate) + direction * (self.step.months || 0);
-	
-	
+
+
     //self.activeDate.setFullYear(year, month, 1);
 	self.activeDate = PersianDateService.persian_to_gregorian_Date(year,month,1);
-	
+
     self.refreshView();
   };
 
@@ -285,8 +285,8 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
 
 		//var year = ctrl.activeDate.getFullYear(),
 		var year = PersianDateService.getFullYear(ctrl.activeDate),
-		
-		
+
+
 		//month = ctrl.activeDate.getMonth(),
 		month = PersianDateService.getMonth(ctrl.activeDate),
 
@@ -344,14 +344,14 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
         var checkDate = new Date(date);
         checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7)); // Thursday
         var time = checkDate.getTime();
-        
+
         checkDate.setMonth(2); // Compare with 1 farvardin
         checkDate.setDate(15); // Compare with 1 farvardin
-        
+
         if((time - checkDate)<0){
             return Math.floor(Math.round(((time + (86400000 * 365)) - checkDate) / 86400000) / 7) + 1;
         }
-  
+
         //checkDate.setMonth(0); // Compare with Jan 1
         //checkDate.setDate(1);
         return Math.floor(Math.round((time - checkDate) / 86400000) / 7) + 1;
@@ -371,11 +371,11 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
         } else if (key === 'pageup' || key === 'pagedown') {
           var month = ctrl.activeDate.getMonth() + (key === 'pageup' ? - 1 : 1);
           ctrl.activeDate.setMonth(month, 1);
-		  
+
           //date = Math.min(getDaysInMonth(ctrl.activeDate.getFullYear(), ctrl.activeDate.getMonth()), date);
 		  date = Math.min(PersianDateService.persianMonthDays(PersianDateService.getFullYear(ctrl.activeDate), PersianDateService.getMonth(ctrl.activeDate) ), date);
-		  
-		  
+
+
         } else if (key === 'home') {
           date = 1;
         } else if (key === 'end') {
@@ -404,8 +404,8 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
         var months = new Array(12),
             //year = ctrl.activeDate.getFullYear();
 			year = PersianDateService.getFullYear(ctrl.activeDate);
-			
-			
+
+
         for ( var i = 0; i < 12; i++ ) {
           //months[i] = angular.extend(ctrl.createDateObject(new Date(year, i, 1), ctrl.formatMonth), {
 		  months[i] = angular.extend(ctrl.createDateObject(PersianDateService.persian_to_gregorian_Date(year, i, 1), ctrl.formatMonth), {
@@ -415,8 +415,8 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
 
         //scope.title = dateFilter(ctrl.activeDate, ctrl.formatMonthTitle);
 		scope.title = persianDateFilter(ctrl.activeDate, ctrl.formatMonthTitle);
-		
-		
+
+
         scope.rows = ctrl.split(months, 3);
       };
 
@@ -472,10 +472,10 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
 
         //for ( var i = 0, start = getStartingYear(ctrl.activeDate.getFullYear()); i < range; i++ ) {
 		for ( var i = 0, start = getStartingYear(PersianDateService.getFullYear(ctrl.activeDate)); i < range; i++ ) {
-		
+
           //years[i] = angular.extend(ctrl.createDateObject(new Date(start + i, 0, 1), ctrl.formatYear), {
 		  years[i] = angular.extend(ctrl.createDateObject(PersianDateService.persian_to_gregorian_Date(start + i, 0, 1), ctrl.formatYear), {
-		  
+
             uid: scope.uniqueId + '-' + i
           });
         }
@@ -529,7 +529,7 @@ angular.module('ui.bootstrap.persian.datepicker', ['ui.bootstrap.dateparser', 'u
   showButtonBar: true
 })
 
-.directive('datepickerPopupPersian', ['$compile', '$parse', '$document', '$position', 'dateFilter', 'dateParser', 'datepickerPopupConfig','PersianDateService','persianDateFilter','EnToFaNumberFilter',
+.directive('datepickerPopupPersian', ['$compile', '$parse', '$document', '$uibPosition', 'dateFilter', 'uibDateParser', 'datepickerPopupConfig','PersianDateService','persianDateFilter','EnToFaNumberFilter',
 function ($compile, $parse, $document, $position, dateFilter, dateParser, datepickerPopupConfig, PersianDateService, persianDateFilter,EnToFaNumberFilter) {
   return {
     restrict: 'EA',
@@ -648,10 +648,10 @@ function ($compile, $parse, $document, $position, dateFilter, dateParser, datepi
 
       // Outter change
       ngModel.$render = function() {
-	  
+
         //var date = ngModel.$viewValue ? dateFilter(ngModel.$viewValue, dateFormat) : '';
 		var date = ngModel.$viewValue ? EnToFaNumberFilter(persianDateFilter(ngModel.$viewValue, dateFormat)) : '';
-		
+
         element.val(date);
         scope.date = parseDate( ngModel.$modelValue );
       };

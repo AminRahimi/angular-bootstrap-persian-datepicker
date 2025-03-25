@@ -282,30 +282,56 @@ angular.module('persianDate', [])
                 (((((year - ((year > 0) ? 474 : 473)) % 2820) + 474) + 38) * 682) % 2816) < 682;
         };
 
-        var jd_to_persian = function(jd) {
-            var year, month, day, depoch, cycle, cyear, ycycle, aux1, aux2, yday;
+	    var jd_to_persian = function (jd) {
+	        var year, month, day, depoch, cycle, cyear, ycycle, aux1, aux2, yday;
 
-            jd = Math.floor(jd) + 0.5;
+			var ljd = Math.floor(jd) + 0.5;
 
-            depoch = jd - persian_to_jd(475, 1, 1);
-            cycle = Math.floor(depoch / 1029983);
-            cyear = mod(depoch, 1029983);
-            if (cyear == 1029982) {
-                ycycle = 2820;
-            } else {
-                aux1 = Math.floor(cyear / 366);
-                aux2 = mod(cyear, 366);
-                ycycle = Math.floor(((2134 * aux1) + (2816 * aux2) + 2815) / 1028522) + aux1 + 1;
-            }
-            year = ycycle + (2820 * cycle) + 474;
-            if (year <= 0) {
-                year--;
-            }
-            yday = (jd - persian_to_jd(year, 1, 1)) + 1;
-            month = (yday <= 186) ? Math.ceil(yday / 31) : Math.ceil((yday - 6) / 30);
-            day = (jd - persian_to_jd(year, month, 1)) + 1;
-            return new Array(year, month, day);
-        };
+			depoch = ljd - persian_to_jd(475, 1, 1);
+	        cycle = Math.floor(depoch / 1029983);
+	        cyear = mod(depoch, 1029983);
+	        if (cyear == 1029982) {
+	            ycycle = 2820;
+	        } else {
+	            aux1 = Math.floor(cyear / 366);
+	            aux2 = mod(cyear, 366);
+	            ycycle = Math.floor(((2134 * aux1) + (2816 * aux2) + 2815) / 1028522) + aux1 + 1;
+	        }
+	        year = ycycle + (2820 * cycle) + 474;
+	        if (year <= 0) {
+	            year--;
+	        }
+			yday = (ljd - persian_to_jd(year, 1, 1)) + 1;
+	        month = (yday <= 186) ? Math.ceil(yday / 31) : Math.ceil((yday - 6) / 30);
+			day = (ljd - persian_to_jd(year, month, 1)) + 1;
+			if (year === 1404) {
+				var ljd = Math.floor(jd) - 0.5;
+
+				depoch = ljd - persian_to_jd(475, 1, 1);
+				cycle = Math.floor(depoch / 1029983);
+				cyear = mod(depoch, 1029983);
+				if (cyear == 1029982) {
+					ycycle = 2820;
+				} else {
+					aux1 = Math.floor(cyear / 366);
+					aux2 = mod(cyear, 366);
+					ycycle = Math.floor(((2134 * aux1) + (2816 * aux2) + 2815) / 1028522) + aux1 + 1;
+				}
+				year = ycycle + (2820 * cycle) + 474;
+				if (year <= 0) {
+					year--;
+				}
+				yday = (ljd - persian_to_jd(year, 1, 1)) + 1;
+				month = (yday <= 186) ? Math.ceil(yday / 31) : Math.ceil((yday - 6) / 30);
+				day = (ljd - persian_to_jd(year, month, 1)) + 1;
+
+				if (year === 1403 && month === 12 && day === 29) {
+					day = 30;
+				}
+			}
+	        return new Array(year, month, day);
+	    };
+        
         var persian_to_jd = function(year, month, day) {
             var epbase, epyear;
 
